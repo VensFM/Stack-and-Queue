@@ -141,6 +141,18 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ArrayQueue.h" />
+    <ClInclude Include="ArrayStack.h" />
+    <ClInclude Include="Queue.h" />
+    <ClInclude Include="QueueOverflow.h" />
+    <ClInclude Include="QueueUnderflow.h" />
+    <ClInclude Include="Stack.h" />
+    <ClInclude Include="StackOverflow.h" />
+    <ClInclude Include="StackUnderflow.h" />
+    <ClInclude Include="WrongQueueSize.h" />
+    <ClInclude Include="WrongStackSize.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
