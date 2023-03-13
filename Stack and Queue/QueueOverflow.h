@@ -1,9 +1,8 @@
 #pragma once
 
-#include <exception>
 #include <string>
 
-class QueueOverflow : public std::exception
+class QueueOverflow
 {
 public:
 	QueueOverflow(const std::string& message)

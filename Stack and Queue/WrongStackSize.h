@@ -1,19 +1,11 @@
 #pragma once
 
-#include <exception>
 #include <string>
+#include "Stack.h"
 
-class WrongStackSize : public std::exception
+template <class T>
+class WrongStackSize final : public Stack<T>::StackException
 {
 public:
-	WrongStackSize(const std::string& message)
-	{
-		message_ = " WrongStackSize: " + message + "\n";
-	}
-	const char* content() const noexcept
-	{
-		return message_.c_str();
-	}
-private:
-	std::string message_;
+	WrongStackSize(const std::string& message) : Stack<T>::StackException(" WrongStackSize: " + message + "\n") {}
 };

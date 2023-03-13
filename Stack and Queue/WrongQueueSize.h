@@ -1,9 +1,8 @@
 #pragma once
 
-#include <exception>
 #include <string>
 
-class WrongQueueSize : public std::exception
+class WrongQueueSize 
 {
 public:
 	WrongQueueSize(const std::string& message)

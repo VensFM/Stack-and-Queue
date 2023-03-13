@@ -143,7 +143,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ArrayQueue.h" />
-    <ClInclude Include="ArrayStack.h" />
+    <ClInclude Include="StackArray.h" />
     <ClInclude Include="Queue.h" />
     <ClInclude Include="QueueOverflow.h" />
     <ClInclude Include="QueueUnderflow.h" />

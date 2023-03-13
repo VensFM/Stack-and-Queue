@@ -1,19 +1,11 @@
 #pragma once
 
-#include <exception>
 #include <string>
+#include "Stack.h"
 
-class StackUnderflow : public std::exception
+template <class T>
+class StackUnderflow final : public Stack<T>::StackException
 {
 public:
-	StackUnderflow(const std::string& message)
-	{
-		message_ = " StackUnderflow: " + message + "\n";
-	}
-	const char* content() const noexcept
-	{
-		return message_.c_str();
-	}
-private:
-	std::string message_;
+	StackUnderflow(const std::string& message) : Stack<T>::StackException(" StackUnderflow: " + message + "\n") {}
 };
