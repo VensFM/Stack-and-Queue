@@ -142,7 +142,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ArrayQueue.h" />
+    <ClInclude Include="QueueArray.h" />
     <ClInclude Include="StackArray.h" />
     <ClInclude Include="Queue.h" />
     <ClInclude Include="QueueOverflow.h" />

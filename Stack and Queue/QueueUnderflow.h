@@ -1,18 +1,11 @@
 #pragma once
 
 #include <string>
+#include "Queue.h"
 
-class QueueUnderflow
+template <class T>
+class QueueUnderflow final : public Queue<T>::QueueException
 {
 public:
-	QueueUnderflow(const std::string& message)
-	{
-		message_ = " QueueUnderflow: " + message + "\n";
-	}
-	const char* content() const noexcept
-	{
-		return message_.c_str();
-	}
-private:
-	std::string message_;
+	QueueUnderflow(const std::string& message) : Queue<T>::QueueException(" QueueUnderflow: " + message + "\n") {}
 };

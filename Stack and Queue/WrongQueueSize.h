@@ -1,18 +1,11 @@
 #pragma once
 
 #include <string>
+#include "Queue.h"
 
-class WrongQueueSize 
+template <class T>
+class WrongQueueSize final : public Queue<T>::QueueException
 {
 public:
-	WrongQueueSize(const std::string& message)
-	{
-		message_ = " WrongQueueSize: " + message + "\n";
-	}
-	const char* content() const noexcept
-	{
-		return message_.c_str();
-	}
-private:
-	std::string message_;
+	WrongQueueSize(const std::string& message) : Queue<T>::QueueException(" WrongQueueSize: " + message + "\n") {}
 };

@@ -11,14 +11,15 @@ public:
 	StackArray(size_t size = 100); 
 	StackArray(const StackArray<T>& src) = delete;
 	StackArray(StackArray<T>&& src);
-	StackArray& operator=(const StackArray<T>& src) = delete;
-	StackArray& operator=(StackArray<T>&& src);
+	StackArray<T>& operator=(const StackArray<T>& src) = delete;
+	StackArray<T>& operator=(StackArray<T>&& src);
 	~StackArray()override; 
 
 	void push(const T& e)override;
 	T pop()override;
 	const T& top()override;
 	bool isEmpty()override;
+
 private:
 	T* array_; 
 	size_t top_; 
