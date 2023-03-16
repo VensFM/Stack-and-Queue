@@ -33,7 +33,7 @@ QueueArray<T>::QueueArray(size_t size) : size_(size), head_(0), tail_(0)
 {
 	if (size_ < 1)
 	{
-		throw WrongStackSize<T>("stack size too small.");
+		throw WrongQueueSize<T>("stack size too small.");
 	}
 	try
 	{
@@ -41,7 +41,7 @@ QueueArray<T>::QueueArray(size_t size) : size_(size), head_(0), tail_(0)
 	}
 	catch (...)
 	{
-		throw WrongStackSize<T>("stack size too big.");
+		throw WrongQueueSize<T>("stack size too big.");
 	}
 }
 

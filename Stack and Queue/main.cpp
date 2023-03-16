@@ -2,12 +2,22 @@
 #include <string>
 #include "Stack.h"
 #include "StackArray.h"
+#include "Queue.h"
+#include "QueueArray.h"
 
 bool checkBalanceBrackets(const std::string& text, int maxDeep = 30);
 bool testCheckBalanceBrackets();
 
 int main()
 {
+    try
+    {
+        QueueArray<long> test(999999999999);
+    }
+    catch (Queue<long>::QueueException& error)
+    {
+        std::cerr << error.getMessage();
+    }
     testCheckBalanceBrackets();
 	return 0;
 }
