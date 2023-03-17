@@ -29,7 +29,7 @@ private:
 };
 
 template<typename T>
-QueueArray<T>::QueueArray(size_t size) : size_(size), head_(0), tail_(0)
+QueueArray<T>::QueueArray(size_t size) : size_(size + 1), head_(0), tail_(0)
 {
 	if (size_ < 1)
 	{
@@ -37,7 +37,7 @@ QueueArray<T>::QueueArray(size_t size) : size_(size), head_(0), tail_(0)
 	}
 	try
 	{
-		array_ = new T[size_ + 1];
+		array_ = new T[size_];
 	}
 	catch (...)
 	{
@@ -71,7 +71,7 @@ QueueArray<T>::~QueueArray()
 template<typename T>
 void QueueArray<T>::enQueue(const T& e)
 {
-	if (head_ == tail_ + 1 || (tail_ == size_ - 1 && head_ == 0))
+	if (head_ == tail_ + 1 || (tail_ == size_ - 1  && head_ == 0))
 	{
 		throw QueueOverflow<T>("no space for new element.");
 	}
@@ -82,7 +82,7 @@ void QueueArray<T>::enQueue(const T& e)
 	}
 	else
 	{
-		tail_++;
+		++tail_;
 	}
 }
 

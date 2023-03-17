@@ -5,21 +5,62 @@
 #include "Queue.h"
 #include "QueueArray.h"
 
+bool testStackArray();
 bool checkBalanceBrackets(const std::string& text, int maxDeep = 30);
 bool testCheckBalanceBrackets();
+bool testQueueArray();
 
 int main()
 {
+    testStackArray();
+    testCheckBalanceBrackets();
+    testQueueArray();
+
+	return 0;
+}
+
+bool testStackArray()
+{
+    system("cls");
+    std::cout << "    1.Test StackArray:\n\nStandard error checking:\n";
     try
     {
-        QueueArray<long> test(999999999999);
+        StackArray<int> test(0);
     }
-    catch (Queue<long>::QueueException& error)
+    catch (Stack<int>::StackException& error)
     {
         std::cerr << error.getMessage();
     }
-    testCheckBalanceBrackets();
-	return 0;
+    try
+    {
+        StackArray<long> test(99999999999999999);
+    }
+    catch (Stack<long>::StackException& error)
+    {
+        std::cerr << error.getMessage();
+    }
+    try
+    {
+        StackArray<int> test(1);
+        test.push(0);
+        test.push(0);
+    }
+    catch (Stack<int>::StackException& error)
+    {
+        std::cerr << error.getMessage();
+    }
+    try
+    {
+        StackArray<int> test(1);
+        test.pop();
+    }
+    catch (Stack<int>::StackException& error)
+    {
+        std::cerr << error.getMessage();
+    }
+    system("pause");
+    system("cls");
+    return true;
 }
 
 bool checkBalanceBrackets(const std::string& text, int maxDeep)
@@ -68,6 +109,8 @@ bool checkBalanceBrackets(const std::string& text, int maxDeep)
 
 bool testCheckBalanceBrackets()
 {
+    system("cls");
+    std::cout << "    2.Test CheckBalanceBrackets:\n\n";
     const char* text00 = " ";
     std::cout << text00 << ": " << (checkBalanceBrackets(text00) ? "Right" : "Error") << "\n";
     const char* text01 = "( )  ";
@@ -83,5 +126,51 @@ bool testCheckBalanceBrackets()
     const char* text06 = "( ( [{ ][ ]([ ])]) ) ";
     std::cout << text06 << ": " << (checkBalanceBrackets(text06) ? "Right" : "Error") << "\n";
 
+    system("pause");
+    system("cls");
+    return true;
+}
+
+bool testQueueArray()
+{
+    system("cls");
+    std::cout << "    3.Test QueueArray:\n\nStandard error checking:\n";
+    try
+    {
+        QueueArray<int> test(0);
+    }
+    catch (Queue<int>::QueueException& error)
+    {
+        std::cerr << error.getMessage();
+    }
+    try
+    {
+        QueueArray<long> test(99999999999999999);
+    }
+    catch (Queue<long>::QueueException& error)
+    {
+        std::cerr << error.getMessage();
+    }
+    try
+    {
+        QueueArray<int> test(1);
+        test.enQueue(0);
+        test.enQueue(0);
+    }
+    catch (Queue<int>::QueueException& error)
+    {
+        std::cerr << error.getMessage();
+    }
+    try
+    {
+        QueueArray<int> test(1);
+        test.deQueue();
+    }
+    catch (Queue<int>::QueueException& error)
+    {
+        std::cerr << error.getMessage();
+    }
+    system("pause");
+    system("cls");
     return true;
 }
