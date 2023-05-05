@@ -31,7 +31,7 @@ private:
 template<typename T>
 QueueArray<T>::QueueArray(size_t size) : size_(size + 1), head_(0), tail_(0)
 {
-	if (size_ < 1)
+	if (size < 1)
 	{
 		throw WrongQueueSize<T>("stack size too small.");
 	}

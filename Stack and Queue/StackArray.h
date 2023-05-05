@@ -20,6 +20,8 @@ public:
 	const T& top()override;
 	bool isEmpty()override;
 
+	void turnOver();
+
 private:
 	T* array_; 
 	size_t top_; 
@@ -98,6 +100,28 @@ template<class T>
 bool StackArray<T>::isEmpty()
 {
 	return top_ == 0;
+}
+
+template<class T>
+void StackArray<T>::turnOver()
+{
+	if (isEmpty())
+	{
+		return;
+	}
+	T* buf = new T[size_];
+	size_t i = 0;
+	while (!isEmpty())
+	{
+		buf[i] = pop();
+		i++;
+	}
+	for (size_t j = 0; j < i; ++j)
+	{
+		push(buf[j]);
+	}
+	delete[] buf;
+	return;
 }
 
 template <class T>

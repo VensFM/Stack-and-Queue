@@ -9,13 +9,32 @@ bool testStackArray();
 bool checkBalanceBrackets(const std::string& text, int maxDeep = 30);
 bool testCheckBalanceBrackets();
 bool testQueueArray();
+char* process(char* dest, const char* src, size_t stackSize = 15);
 
 int main()
 {
-    testStackArray();
+    /*testStackArray();
     testCheckBalanceBrackets();
-    testQueueArray();
-
+    testQueueArray();*/
+    char test[] = "Fall* seven tim*es and stand** up *eight";
+    char result[50];
+    size_t i=0;
+    std::cout << "    <<Testing>>\n Before: ";
+    while (test[i] != '\0')
+    {
+        std::cout << test[i];
+        i++;
+    }
+    i = 0;
+    process(result, test, 30);
+    std::cout << "\n After: ";
+    while (result[i] != '\0')
+    {
+        std::cout << result[i];
+        i++;
+    }
+    std::cout << "\n\n  Testing a function for stack overflow: \n";
+    process(result, test, 1);
 	return 0;
 }
 
@@ -173,4 +192,58 @@ bool testQueueArray()
     system("pause");
     system("cls");
     return true;
+}
+
+char* process(char* dest, const char* src, size_t stackSize)
+{
+    try
+    {
+        StackArray<char> out(stackSize);
+        char* buf = new char[stackSize];
+        int i = 0, j = 0;
+        while (src[i] != '\0')
+        {
+            if (src[i] != ' ' && src[i] != '*')
+            {
+                out.push(src[i]);
+                i++;
+                continue;
+            }
+            if (src[i] == ' ')
+            {
+                out.turnOver();
+                while (!out.isEmpty())
+                {
+                    dest[j] = out.pop();
+                    j++;
+                }
+                dest[j] = ' ';
+                j++;
+            }
+            if (src[i] == '*')
+            {
+                if (out.isEmpty())
+                {
+                    i++;
+                    continue;
+                }
+                out.turnOver();
+            }
+            i++;
+        }
+        out.turnOver();
+        while (!out.isEmpty())
+        {
+            dest[j] = out.pop();
+            j++;
+        }
+        dest[j] = '\0';
+        delete[] buf;
+    }
+    catch (Stack<char>::StackException& error)
+    {
+        std::cerr << error.getMessage();
+        exit(-1);
+    }
+    return dest;
 }
